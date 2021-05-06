@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Desired PC + Printer</h1><a href="/multi"><button>clear</button></a><br>
+    <form method="post">
+        <h3>Budget: <input type="number" name="budget" placeholder="Enter Your Budget" required></h3>
+        <h3>Minimum Speed: <input type="number" name="speed" placeholder="Enter Your Minimum Speed" required></h3>
+        <input type="submit" value="submit">
+        {% for e in data -%}
+            <br><br>
+            <h3> Optimal Package</h3>
+            PC Model Number: {{ e[0] }}<br>
+            PC Speed: {{ e[1] }}<br>
+            PC RAM: {{ e[2] }}<br>
+            PC Hard-Disk: {{ e[3] }}<br>
+            PC Price: ${{ e[4] }}<br><br>
+            Printer Model Number: {{ e[5] }}<br>
+            Color: {% if e[6]==1 %} Color Printer {% else %} black and white Printer {% endif %}<br>
+            Printer Type: {{ e[7] }}<br>
+            Printer Price: ${{ e[8] }}<br>
+        {% endfor %}
+    </form>
+</div>
+{% endblock %}

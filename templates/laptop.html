@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Home{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Desired Laptop</h1><a href="/laptop"><button>clear</button></a><br>
+    <form method="post">
+        <h3>Speed(GHz): <input type="number" name="speed" placeholder="Please Enter Minimum Speed" value=0 required></h3>
+        <h3>Ram Capacity: <input type="number" name="ram" placeholder="Please Enter Minimum Ram Size" value=0 required></h3>
+        <h3>Hard-Disk Size: <input type="number" name="hd" placeholder="Please Enter Minimum Hard-Disk Size" value=0 required></h3>
+        <h3>Screen Size: <input type="number" name="screen" placeholder="Please Enter Minimum Screen Size" value=0 required></h3>
+        <h3><input type="submit" value="submit">
+        {% for e in data -%}
+            <br>
+            Maker: {{ e[0] }}<br>
+            Model Number: {{ e[1] }}<br>
+            Speed: {{ e[2] }}GHz<br>
+            RAM: {{ e[3] }}<br>
+            Hard-Disk: {{ e[4] }}<br>
+            Screen: {{ e[5] }} Inch<br>
+            Price: ${{ e[6] }}<br>
+        {% endfor %}
+    </form>
+</div>
+
+{% endblock %}

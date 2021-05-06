@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Home{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Desired Product</h1><a href="/product"><button>clear</button></a><br>
+    <form method="post">
+        <h3>Manufacture: <input type="text" name="maker" placeholder="Enter Desired Maker" required><input type="submit" value="submit"></h3>
+        {% for e in data -%}
+            <br>
+            Maker: {{ e[0] }}<br>
+            Model Number: {{ e[1] }}<br>
+            Type : {{ e[2] }} <br>
+            {% if e[2] == "Laptop" %}
+                Speed: {{ e[3] }}GHz<br>
+                RAM: {{ e[4] }}<br>
+                Hard-Disk: {{ e[5] }}<br>
+                Screen: {{ e[6] }} Inch<br>
+            {% elif e[2] == "PC" %}
+                Speed: {{ e[3] }}GHz<br>
+                RAM: {{ e[4] }}<br>
+                Hard-Disk: {{ e[5] }}<br>
+            {% else %}
+                Color: {% if e[8]==1 %} Color Printer {% else %} black and white Printer {% endif %}<br>
+                Printer Type: {{ e[9] }}<br>
+            {% endif %}
+            Price: ${{ e[7] }}<br>
+
+        {% endfor %}
+    </form>
+</div>
+    <script>
+    function goBack(){
+        window.location('/pc');
+    }
+    </script>
+{% endblock %}

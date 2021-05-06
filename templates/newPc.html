@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Home{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>New PC</h1><a href="/newPC"><button>clear</button></a><br>
+    <form method="post">
+        <h3>Manufacture: <input type="text" name="maker" placeholder="Enter Desired Maker" required></h3>
+        <h3>Model Number: <input type="number" name="model" placeholder="Enter Desired Model" required></h3>
+        <h3>Speed(GHz): <input type="number" name="speed" placeholder="Please Enter Minimum Speed" required></h3>
+        <h3>Ram Capacity: <input type="number" name="ram" placeholder="Please Enter Minimum Ram Size" required></h3>
+        <h3>Hard-Disk Size: <input type="number" name="hd" placeholder="Please Enter Minimum Hard-Disk Size" required></h3>
+        <h3>Price: <input type="number" name="price" placeholder="Please Enter the Price" required></h3>
+        <h3><input type="submit" value="submit">
+        {{ message }}
+    </form>
+</div>
+
+{% endblock %}
